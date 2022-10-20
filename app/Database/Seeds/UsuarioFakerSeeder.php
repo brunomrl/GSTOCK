@@ -4,13 +4,14 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class UsuarioFakeSeeder extends Seeder
+class UsuarioFakerSeeder extends Seeder
 {
     public function run()
     {
-        $usuarioModel = new \APP\Models\UsuarioModel();
+        $usuarioModel = new \App\Models\UserModel();
         $faker = \Faker\Factory::create();
         $criarQuantosUsuarios = 50;
+        $usuariosPush = [];
 
         for ($i = 0; $i < $criarQuantosUsuarios; $i++) {
             array_push($usuariosPush, [
@@ -21,8 +22,12 @@ class UsuarioFakeSeeder extends Seeder
             ]);
         }
 
-        echo '<pre>';
-        print_r($usuariosPush);
-        exit;
+        // echo '<pre>';
+        // print_r($usuariosPush);
+        // exit;
+
+        $usuarioModel->skipValidation(true)
+            ->protect(false)
+            ->insertBatch($usuariosPush);
     }
 }

@@ -4,26 +4,27 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UsuarioMOdel extends Model
+
+class UsuarioModel extends Model
 {
-    protected $table            = 'usuarios';
-    protected $returnType       = 'objects';
-    protected $useSoftDeletes   = true; //explicar depois
-    protected $allowedFields    = [
+    protected $table                = 'usuarios';
+    protected $returnType           = 'App\Entities\Usuario';
+    protected $useSoftDeletes       = true; // Explicar essa característica
+    protected $allowedFields        = [
         'nome',
         'email',
         'password',
         'reset_hash',
         'reset_expira_em',
         'imagem',
-        //Não colocaremos o campo ativo...pois existe a manipulação de formulário
+        // Não colocaremos o campo ativo.... Pois existe a manipulação de formulário
     ];
 
     // Dates
-    protected $useTimestamps = true;
-    protected $createdField  = 'criado_em';
-    protected $updatedField  = 'uatualizado_em';
-    protected $deletedField  = 'deletado_em';
+    protected $useTimestamps        = true;
+    protected $createdField         = 'criado_em';
+    protected $updatedField         = 'atualizado_em';
+    protected $deletedField         = 'deletado_em';
 
     // Validation
     protected $validationRules      = [];

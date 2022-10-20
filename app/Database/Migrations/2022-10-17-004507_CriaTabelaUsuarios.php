@@ -65,6 +65,8 @@ class CriaTabelaUsuarios extends Migration
                 'default' => null,
             ],
         ]);
+
+
         $this->forge->addKey('id', true);
         $this->forge->addUniqueKey('email');
         $this->forge->createTable('usuarios');
